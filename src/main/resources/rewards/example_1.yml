@@ -1,0 +1,136 @@
+data:
+  Region_specific:
+    enable: true
+    region: <REGION_NAME_HERE>
+
+reward:
+  # 20% chance reward
+  20:
+    Name: "20% Chance Reward"
+    lore:
+      - 'This is a rare reward'
+      - 'Chance to get powerful items'
+      - 'Good luck!'
+    rewards:
+      - Minecraft:DIAMOND:20
+      - Reward:enchanted_bow:2
+      - Minecraft:STONE:100
+      - Minecraft:EMERALD:5
+      - Minecraft:GOLD_INGOT:10
+    reward_command:
+      - "essentials:give {playername} stone 100"
+      - "essentials:give {playername} Diamond_pickaxe 1"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "[TITLE] player {playername} got reward {reward}"
+        - "[SUBTITLE] reward {reward}"
+        - "[ACTION] reward action bar"
+        - "player {playername} got reward"
+      message:
+        - "[TITLE] You got 20% reward"
+        - "[SUBTITLE] This is a sub title"
+        - "[ACTION] this is action bar message"
+        - "This is chat message"
+
+  # 50% chance reward
+  50:
+    Name: "50% Chance Reward"
+    lore:
+      - 'A common reward'
+      - 'Useful for everyday items'
+    rewards:
+      - IRON_INGOT:50
+      - COAL:200
+      - LAPIS_LAZULI:10
+      - IRON_SWORD:1
+    reward_command:
+      - "essentials:give {playername} iron_ingot 50"
+      - "essentials:give {playername} iron_sword 1"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "[TITLE] player {playername} got a common reward"
+        - "[ACTION] common reward action bar"
+      message:
+        - "[TITLE] You got a 50% reward"
+        - "[ACTION] Useful items received!"
+
+  # 5% chance reward
+  5:
+    Name: "5% Chance Reward"
+    lore:
+      - 'An extremely rare reward'
+      - 'Contains legendary items'
+      - 'You are very lucky!'
+    rewards:
+      - NETHER_STAR:1
+      - DRAGON_EGG:1
+      - DIAMOND_BLOCK:10
+      - ENCHANTED_GOLDEN_APPLE:5
+    reward_command:
+      - "essentials:give {playername} nether_star 1"
+      - "essentials:give {playername} dragon_egg 1"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "[TITLE] player {playername} got an epic reward!"
+        - "[SUBTITLE] reward {reward}"
+        - "[ACTION] epic reward action bar"
+        - "player {playername} got an epic reward"
+      message:
+        - "[TITLE] You got a 5% reward"
+        - "[SUBTITLE] Legendary items!"
+        - "[ACTION] Epic items received!"
+
+  # 10% chance reward
+  10:
+    Name: "10% Chance Reward"
+    lore:
+      - 'A rare reward'
+      - 'Chance to get enchanted items'
+    rewards:
+      - ENCHANTED_BOOK:3
+      - DIAMOND_SWORD:1
+      - EXP_BOTTLE:50
+      - GOLDEN_CARROT:20
+    reward_command:
+      - "essentials:give {playername} enchanted_book 3"
+      - "essentials:give {playername} diamond_sword 1"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "[TITLE] player {playername} got a rare reward!"
+        - "[SUBTITLE] reward {reward}"
+        - "[ACTION] rare reward action bar"
+        - "player {playername} got a rare reward"
+      message:
+        - "[TITLE] You got a 10% reward"
+        - "[SUBTITLE] Enchanted items!"
+        - "[ACTION] Rare items received!"
+
+  # 15% chance reward
+  15:
+    Name: "15% Chance Reward"
+    lore:
+      - 'An uncommon reward'
+      - 'Chance to get useful resources'
+    rewards:
+      - GOLD_INGOT:25
+      - REDSTONE:100
+      - QUARTZ:50
+      - NAME_TAG:5
+    reward_command:
+      - "essentials:give {playername} gold_ingot 25"
+      - "essentials:give {playername} name_tag 5"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "[TITLE] player {playername} got an uncommon reward!"
+        - "[SUBTITLE] reward {reward}"
+        - "[ACTION] uncommon reward action bar"
+        - "player {playername} got an uncommon reward"
+      message:
+        - "[TITLE] You got a 15% reward"
+        - "[SUBTITLE] Useful resources!"
+        - "[ACTION] Uncommon items received!"

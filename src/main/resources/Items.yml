@@ -1,0 +1,64 @@
+items:
+  enchanted_bow:
+    material: BOW
+    model_data: 0
+    Item_Name: "&6&lDragon's Breath Bow"
+    lore:
+      - '&7&oForged in the flames of a dragon'
+      - '&eShoots flaming arrows'
+      - '&9Has a chance to summon lightning'
+    hide_attributes: true
+    unbreakable: false
+    enchantment:
+      - power:10
+      - flame:5
+      - infinity:1
+      - unbreaking:10
+      - punch:5
+
+  special_pickaxe:
+    material: DIAMOND_PICKAXE
+    model_data: 0
+    Item_Name: "&a&lEmerald Pickaxe of Fortune"
+    lore:
+      - '&7&oCrafted with the essence of emeralds'
+      - '&aIncreases ore yield'
+      - '&dUnbreakable and efficient'
+    hide_attributes: true
+    unbreakable: false
+    enchantment:
+      - efficiency:10
+      - unbreaking:10
+      - fortune:10
+      - mending:1
+
+  mystical_helmet:
+    material: DIAMOND_HELMET
+    model_data: 0
+    Item_Name: "&b&lHelm of the Ocean"
+    lore:
+      - '&7&oGrants the wearer the power of the sea'
+      - '&bBreathing underwater'
+      - '&9Enhanced vision underwater'
+    hide_attributes: true
+    unbreakable: false
+    enchantment:
+      - respiration:5
+      - aqua_affinity:3
+      - protection:10
+      - unbreaking:10
+
+  best_diamond_sword:
+    material: DIAMOND_SWORD
+    model_data: 0
+    Item_Name: "&c&lBest DiamondSword"
+    lore:
+      - '&7&oThis item obtained from 20% fishing'
+      - '&cLine 2'
+      - '&bLine 3'
+    hide_attributes: true
+    unbreakable: false
+    enchantment:
+      - sharpness:1
+      - unbreaking:1
+      - mending:1
