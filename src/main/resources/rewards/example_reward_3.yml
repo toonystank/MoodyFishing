@@ -1,0 +1,134 @@
+data:
+  # Enable or disable region-specific rewards
+  # Specify the region where the rewards can be obtained
+  Region_specific:
+    enable: true
+    region: <REGION_NAME_HERE>
+    # If permission mode is enabled, then player will need MoodyFishing.<region>.fish
+    permission_mode: false
+
+reward:
+  # Settings for the 25% chance reward
+  # This reward contains valuable items
+  25:
+    Name: "25% Chance Reward"
+    lore:
+      - "This is a valuable reward"
+      - "Chance to get useful items"
+      - "Good luck!"
+    rewards:
+      - "Minecraft:GOLDEN_APPLE:10"
+      - "Reward:special_pickaxe:1"
+      - "Minecraft:IRON_INGOT:50"
+      - "Minecraft:EMERALD:10"
+      - "Minecraft:DIAMOND:5"
+    reward_command:
+      - "essentials:give {playername} golden_apple 10"
+      - "essentials:give {playername} iron_ingot 50"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "player {playername} got a 25% chance reward!"
+        - "[ACTION] Enjoy your valuable items!"
+      message:
+        - "You received a 25% chance reward!"
+        - "[ACTION] Valuable items received!"
+
+  # Settings for the 35% chance reward
+  # This reward contains common, useful items
+  35:
+    Name: "35% Chance Reward"
+    lore:
+      - "A common reward"
+      - "Useful for crafting and building"
+    rewards:
+      - "Minecraft:COAL:150"
+      - "Minecraft:IRON_ORE:50"
+      - "Minecraft:REDSTONE:100"
+      - "Minecraft:DIAMOND_PICKAXE:1"
+    reward_command:
+      - "essentials:give {playername} coal 150"
+      - "essentials:give {playername} iron_ore 50"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "player {playername} got a 35% chance reward!"
+        - "[ACTION] Common items for you!"
+      message:
+        - "You received a 35% chance reward!"
+        - "[ACTION] Useful items received!"
+
+  # Settings for the 10% chance reward
+  # This reward contains rare and powerful items
+  10:
+    Name: "10% Chance Reward"
+    lore:
+      - "A rare reward"
+      - "Contains powerful enchanted items"
+      - "You are lucky!"
+    rewards:
+      - "Minecraft:ENCHANTED_GOLDEN_APPLE:3"
+      - "Reward:best_diamond_sword:1"
+      - "Minecraft:DIAMOND_BLOCK:5"
+      - "Minecraft:EXPERIENCE_BOTTLE:100"
+    reward_command:
+      - "essentials:give {playername} enchanted_golden_apple 3"
+      - "essentials:give {playername} diamond_block 5"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "player {playername} got a 10% chance reward!"
+        - "[ACTION] Rare and powerful items!"
+      message:
+        - "You received a 10% chance reward!"
+        - "[ACTION] Powerful items received!"
+
+  # Settings for the 5% chance reward
+  # This reward contains legendary and extremely rare items
+  5:
+    Name: "5% Chance Reward"
+    lore:
+      - "An extremely rare reward"
+      - "Contains legendary items"
+      - "Congratulations!"
+    rewards:
+      - "Minecraft:DRAGON_HEAD:1"
+      - "Reward:mystical_helmet:1"
+      - "Minecraft:NETHERITE_INGOT:5"
+      - "Minecraft:ENCHANTED_BOOK:10"
+    reward_command:
+      - "essentials:give {playername} dragon_head 1"
+      - "essentials:give {playername} netherite_ingot 5"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "player {playername} got a 5% chance reward!"
+        - "[ACTION] Legendary items received!"
+      message:
+        - "You received a 5% chance reward!"
+        - "[ACTION] Legendary items obtained!"
+
+  # Settings for the 15% chance reward
+  # This reward contains uncommon, useful items
+  15:
+    Name: "15% Chance Reward"
+    lore:
+      - "An uncommon reward"
+      - "Useful for special tasks"
+    rewards:
+      - "Minecraft:GOLD_INGOT:30"
+      - "Minecraft:QUARTZ:50"
+      - "Minecraft:DIAMOND:10"
+      - "Minecraft:NAME_TAG:5"
+    reward_command:
+      - "essentials:give {playername} gold_ingot 30"
+      - "essentials:give {playername} quartz 50"
+    reward_message:
+      enable: true
+      broadcast_message:
+        - "player {playername} got a 15% chance reward!"
+        - "[ACTION] Uncommon and useful items!"
+      message:
+        - "You received a 15% chance reward!"
+        - "[ACTION] Uncommon items received!"
+ 

@@ -227,7 +227,7 @@ public class ConfigManger {
      * Reload the config.
      * @throws IOException IOException
      */
-    public void reload() throws IOException {
+    public void reload() throws Exception {
         logger.info("Reloading config for " + file.getName());
         if (isInFolder) {
             process(plugin, file.getName(), file.getParentFile().getName(), false, false);

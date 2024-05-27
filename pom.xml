@@ -41,7 +41,11 @@
                             <relocations>
                                 <relocation>
                                     <pattern>co.aikar</pattern>
-                                    <shadedPattern>com.toonystank.easyclaims.utils.acf</shadedPattern>
+                                    <shadedPattern>com.toonystank.moodyfishing.utils.acf</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>de.themoep.minedown</pattern>
+                                    <shadedPattern>com.toonystank.moodyfishing.utils.minedown</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -158,12 +162,6 @@
             <artifactId>placeholderapi</artifactId>
             <version>2.10.10</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>net.kyori</groupId>
-                    <artifactId>adventure-platform-bukkit</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- Aikar Command Framework -->
         <dependency>
@@ -177,7 +175,6 @@
             <groupId>net.kyori</groupId>
             <artifactId>adventure-platform-bukkit</artifactId>
             <version>4.3.3-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <!-- MineDown -->
         <dependency>

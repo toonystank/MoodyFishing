@@ -1,2 +1,5 @@
 RewardFiles:
+  - example_reward_3.yml
+  - example_reward_2.yml
   - example_reward.yml
+debug_mode: false

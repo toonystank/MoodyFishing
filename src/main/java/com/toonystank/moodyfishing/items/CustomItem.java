@@ -17,8 +17,8 @@ public record CustomItem(String id, Material material, int modelData, String ite
     public ItemStack build() {
         ItemBuilder builder = ItemBuilder
                 .from(material)
-                .name(MessageUtils.format(itemName))
-                .lore(MessageUtils.format(lore))
+                .name(MessageUtils.format(itemName,true))
+                .lore(MessageUtils.format(lore,true))
                 .unbreakable(unbreakable)
                 .model(modelData);
         if (hideAttributes) {

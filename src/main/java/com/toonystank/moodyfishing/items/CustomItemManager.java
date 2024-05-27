@@ -1,11 +1,14 @@
 package com.toonystank.moodyfishing.items;
 
+import com.toonystank.moodyfishing.MoodyFishing;
 import com.toonystank.moodyfishing.utils.ConfigManger;
+import com.toonystank.moodyfishing.utils.MessageUtils;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 
+import java.io.IOException;
 import java.util.*;
 
 @Getter
@@ -14,13 +17,25 @@ public class CustomItemManager extends ConfigManger {
     private final List<CustomItem> customItemList = new ArrayList<>();
 
     public CustomItemManager() throws Exception {
-        super("items.yml",false,false);
+        super("Items.yml",false,true);
+        MoodyFishing.getInstance().getServer().getScheduler().runTaskLater(MoodyFishing.getInstance(),() -> {
+            try {
+                loadItems();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        },60L);
+    }
+    public void reload() throws Exception {
+        customItemList.clear();
+        super.reload();
         loadItems();
+
     }
 
     public CustomItem getItem(String name) {
         for (CustomItem customItem : customItemList) {
-            if (customItem.itemName().equalsIgnoreCase(name)) return customItem;
+            if (customItem.id().equalsIgnoreCase(name)) return customItem;
         }
         return null;
     }

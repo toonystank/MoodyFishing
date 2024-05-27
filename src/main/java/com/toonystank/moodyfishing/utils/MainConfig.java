@@ -1,20 +1,36 @@
 package com.toonystank.moodyfishing.utils;
 
-import com.toonystank.moodyfishing.MoodyFishing;
-import com.toonystank.moodyfishing.rewards.Reward;
+import lombok.Getter;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+@Getter
 public class MainConfig extends ConfigManger{
 
-    private final MoodyFishing plugin;
+    private List<String> rewards = new ArrayList<>();
 
-    private Set<Reward> rewards = new HashSet<>();
-    public MainConfig(MoodyFishing plugin) throws IOException {
+    private boolean debugMode;
+    private static final List<String> fileNames = List.of("example_reward.yml","example_reward_2.yml", "example_reward_3.yml");
+    public MainConfig() throws IOException {
         super("config.yml",false,true);
-        this.plugin = plugin;
+        load();
+    }
+
+    public void load() throws IOException {
+        debugMode = getBoolean("debug_mode");
+        rewards = getStringList("RewardFiles");
+        for (String reward : rewards) {
+            if (fileNames.contains(reward)) {
+                new ConfigManger(reward,"rewards",false,true);
+            }
+        }
+    }
+    public void reload() throws Exception {
+        rewards.clear();
+        super.reload();
+        load();
     }
 
 }

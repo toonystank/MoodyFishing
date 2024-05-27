@@ -62,3 +62,160 @@ items:
       - sharpness:1
       - unbreaking:1
       - mending:1
+  celestial_blade:
+    material: NETHERITE_SWORD
+    model_data: 0
+    Item_Name: "&d&lCelestial Blade of the Stars"
+    lore:
+      - '&7&oCrafted from the essence of the cosmos'
+      - '&6Blinds enemies on hit'
+      - '&cHas a chance to create a celestial explosion'
+    hide_attributes: true
+    unbreakable: true
+    enchantment:
+      - sharpness:10
+      - unbreaking:10
+      - looting:5
+      - mending:1
+      - fire_aspect:5
+
+  phantom_scimitar:
+    material: IRON_SWORD
+    model_data: 0
+    Item_Name: "&5&lPhantom's Scimitar"
+    lore:
+      - '&7&oForged from the shadows of phantoms'
+      - '&8Increases damage at night'
+      - '&7Can turn the wielder invisible briefly'
+    hide_attributes: true
+    unbreakable: false
+    enchantment:
+      - sharpness:8
+      - unbreaking:5
+      - mending:1
+      - knockback:3
+
+  terra_staff:
+    material: BLAZE_ROD
+    model_data: 0
+    Item_Name: "&2&lStaff of Terra"
+    lore:
+      - '&7&oWield the power of the earth'
+      - '&6Summons protective vines'
+      - '&aHeals the wielder when in contact with grass'
+    hide_attributes: true
+    unbreakable: true
+    enchantment:
+      - knockback:2
+      - mending:1
+      - looting:3
+
+  frost_helmet:
+    material: DIAMOND_HELMET
+    model_data: 0
+    Item_Name: "&b&lFrostbound Helmet"
+    lore:
+      - '&7&oInfused with the chill of the Arctic'
+      - '&bProvides resistance to cold damage'
+      - '&9Grants night vision in snowy biomes'
+    hide_attributes: true
+    unbreakable: false
+    enchantment:
+      - respiration:3
+      - aqua_affinity:1
+      - protection:7
+      - unbreaking:5
+
+  storm_chestplate:
+    material: NETHERITE_CHESTPLATE
+    model_data: 0
+    Item_Name: "&9&lStormbringer Chestplate"
+    lore:
+      - '&7&oHarnesses the fury of the storm'
+      - '&eStrikes attackers with lightning'
+      - '&bIncreases speed in rainy weather'
+    hide_attributes: true
+    unbreakable: true
+    enchantment:
+      - protection:10
+      - thorns:5
+      - unbreaking:10
+      - mending:1
+
+  ember_leggings:
+    material: NETHERITE_LEGGINGS
+    model_data: 0
+    Item_Name: "&6&lEmber-Forged Leggings"
+    lore:
+      - '&7&oForged in the heart of a volcano'
+      - '&6Provides fire resistance'
+      - '&cIncreases damage dealt with fire attacks'
+    hide_attributes: true
+    unbreakable: false
+    enchantment:
+      - fire_protection:10
+      - unbreaking:10
+      - mending:1
+
+  winged_boots:
+    material: DIAMOND_BOOTS
+    model_data: 0
+    Item_Name: "&f&lWinged Boots of Hermes"
+    lore:
+      - '&7&oImbued with the speed of the messenger god'
+      - '&fGrants the ability to jump higher'
+      - '&bIncreases speed'
+    hide_attributes: true
+    unbreakable: true
+    enchantment:
+      - feather_falling:10
+      - unbreaking:10
+      - depth_strider:3
+      - soul_speed:3
+
+  void_bow:
+    material: BOW
+    model_data: 0
+    Item_Name: "&0&lVoid Bow"
+    lore:
+      - '&7&oDraws power from the endless void'
+      - '&0Shoots arrows that pull enemies into darkness'
+      - '&8Has a chance to teleport the shooter on hit'
+    hide_attributes: true
+    unbreakable: true
+    enchantment:
+      - power:10
+      - infinity:1
+      - unbreaking:10
+      - punch:5
+      - flame:3
+
+  nature_staff:
+    material: STICK
+    model_data: 0
+    Item_Name: "&a&lNature's Staff"
+    lore:
+      - '&7&oChannel the power of nature'
+      - '&2Summons plant allies to aid in battle'
+      - '&aRegenerates health when near plants'
+    hide_attributes: true
+    unbreakable: true
+    enchantment:
+      - knockback:3
+      - mending:1
+      - looting:3
+
+  spectral_shield:
+    material: SHIELD
+    model_data: 0
+    Item_Name: "&7&lSpectral Shield"
+    lore:
+      - '&7&oA shield made from ghostly energies'
+      - '&8Can phase through attacks'
+      - '&fReflects a portion of damage back to attackers'
+    hide_attributes: true
+    unbreakable: true
+    enchantment:
+      - unbreaking:10
+      - mending:1
+      - thorns:5

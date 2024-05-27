@@ -3,12 +3,11 @@ package com.toonystank.moodyfishing.utils;
 import com.toonystank.moodyfishing.MoodyFishing;
 import com.toonystank.moodyfishing.data.playerdata.FishingPlayer;
 import de.themoep.minedown.adventure.MineDown;
+import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.title.Title;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -69,16 +68,14 @@ public class MessageUtils {
             sendMessage(sender,message);
             return;
         }
-        Title title = Title.title(format(message),Component.empty());
+        Title title = Title.title(format(message,true),Component.empty());
         player.showTitle(title);
     }
     public static void sendMessage(Player sender, String message) {
         sendMessage((CommandSender) sender, message);
     }
     public static void sendMessage(CommandSender sender, String message) {
-        Component component = new MineDown(message).toComponent();
-        component = component.decoration(TextDecoration.ITALIC, false);
-        MoodyFishing.getInstance().getAdventure().sender(sender).sendMessage(component);
+        Audience.audience(sender).sendMessage(format(message,true));
     }
     public static void sendMessage(FishingPlayer sender, Component message) {
         if (!sender.getPlayer().isOnline()) return;
@@ -89,7 +86,7 @@ public class MessageUtils {
     }
     public static void sendMessage(CommandSender sender, Component message) {
         message = message.decoration(TextDecoration.ITALIC, false);
-        MoodyFishing.getInstance().getAdventure().sender(sender).sendMessage(message);
+        Audience.audience(sender).sendMessage(message);
     }
     public static @NotNull Component format(String message) {
         Component component = new MineDown(message).toComponent();
@@ -100,6 +97,9 @@ public class MessageUtils {
     public static @NotNull List<Component> format(List<String> stringsToBeFormatted) {
         return stringsToBeFormatted.stream().map(MessageUtils::format).toList();
     }
+    public static @NotNull List<Component> format(List<String> stringsToBeFormatted,boolean smallFont) {
+        return stringsToBeFormatted.stream().map(s -> format(s, smallFont)).toList();
+    }
     public static @NotNull Component format(String message,boolean smallFont) {
         if (smallFont) message = SmallLetterConvertor.convert(message);
         Component component = new MineDown(message).toComponent();
@@ -107,20 +107,26 @@ public class MessageUtils {
         return component;
     }
     public static void toConsole(List<String> list, boolean string) {
-        list.forEach(message -> toConsole(message,false));
+        list.forEach(MessageUtils::toConsole);
     }
     public static void toConsole(List<Component> list) {
-        list.forEach(component -> toConsole(component, false));
+        list.forEach(MessageUtils::toConsole);
     }
-    public static void toConsole(String message, boolean debug) {
+
+    public static void toConsole(String message,boolean debug) {
+        if (debug && !MoodyFishing.getInstance().getMainConfig().isDebugMode()) return;
         message = "&a[MoodyFishing] &r" + message;
         Component component = new MineDown(message).toComponent();
-        toConsole(component, debug);
+        toConsole(component);
     }
-    public static void toConsole(Component component, boolean debug) {
+    public static void toConsole(String message) {
+        message = "&a[MoodyFishing] &r" + message;
+        Component component = new MineDown(message).toComponent();
+        toConsole(component);
+    }
+    public static void toConsole(Component component) {
         component = component.decoration(TextDecoration.ITALIC,false);
-        MessageUtils.toConsole("sending Message to console ",true);
-        MoodyFishing.getInstance().getAdventure().sender(MoodyFishing.getInstance().getServer().getConsoleSender()).sendMessage(component);
+        Audience.audience(MoodyFishing.getInstance().getServer().getConsoleSender()).sendMessage(component);
     }
     public static void error(String message) {
         message = message + ". Server version: " + MoodyFishing.getInstance().getServer().getVersion() + ". Plugin version: " + MoodyFishing.getInstance().getDescription().getVersion() + ". Please report this error to the plugin developer.";
@@ -131,7 +137,7 @@ public class MessageUtils {
         try {
             component = component.decoration(TextDecoration.ITALIC, false);
             component = component.color(TextColor.fromHexString("#CF203E"));
-            MoodyFishing.getInstance().getAdventure().sender(MoodyFishing.getInstance().getServer().getConsoleSender()).sendMessage(component);
+            Audience.audience(MoodyFishing.getInstance().getServer().getConsoleSender()).sendMessage(component);
         } catch (NullPointerException ignored) {
             error("an error occurred while sending a message");
         }
@@ -144,7 +150,7 @@ public class MessageUtils {
     public static void debug(Component component) {
         try {
             component = component.decoration(TextDecoration.ITALIC, false);
-            MoodyFishing.getInstance().getAdventure().sender(MoodyFishing.getInstance().getServer().getConsoleSender()).sendMessage(component);
+            Audience.audience(MoodyFishing.getInstance().getServer().getConsoleSender()).sendMessage(component);
         } catch (NullPointerException ignored) {
             error("an error occurred while sending a message");
         }
@@ -156,7 +162,7 @@ public class MessageUtils {
     public static void warning(Component component) {
         component = component.decoration(TextDecoration.ITALIC,false);
         component = component.color(TextColor.fromHexString("#FFC107"));
-        MoodyFishing.getInstance().getAdventure().sender(MoodyFishing.getInstance().getServer().getConsoleSender()).sendMessage(component);
+        Audience.audience(MoodyFishing.getInstance().getServer().getConsoleSender()).sendMessage(component);
     }
     public static String replaceGrayWithWhite(String inputString) {
         if (inputString.contains("&7")) inputString = inputString.replace("&7", "&f");

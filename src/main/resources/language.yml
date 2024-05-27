@@ -1,0 +1,8 @@
+enable_auto_text_conversion_to_tiny_text: true
+message:
+  prefix: "&2● &7Moody Fishing &8» "
+  no_permission_command: "&cYou don't have permission to run this command."
+  no_permission_fishing: "&cYou don't have permission to fish in this region."
+  simulation:
+    fish_caught: "&aSimulating fish caught event for {region}."
+    give_reward: "&aSimulating reward for {region}."
