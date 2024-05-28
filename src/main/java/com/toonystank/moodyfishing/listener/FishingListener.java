@@ -48,6 +48,7 @@ public class FishingListener implements Listener {
                     continue;
                 }
             }
+            if (reward.getRewardDataSection().isRegionSpecificRemoveVanillaLoot()) event.getCaught().remove();
             MessageUtils.toConsole("getting rewardSection",true);
             RewardSection rewardSection = plugin.getChanceSystem().getReward(region.getId());
             MessageUtils.toConsole(rewardSection + " rewardSection",true);

@@ -26,6 +26,7 @@ public class MainCommand extends BaseCommand {
         try {
             MoodyFishing.getInstance().getMainConfig().reload();
             MoodyFishing.getInstance().getLanguage().reload();
+            MoodyFishing.getInstance().getChanceSystem().reload();
             MoodyFishing.getInstance().getRewardManager().reload();
             MoodyFishing.getInstance().getCustomItemManager().reload();
         } catch (Exception e) {

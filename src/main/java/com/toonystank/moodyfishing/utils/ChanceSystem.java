@@ -5,12 +5,17 @@ import com.toonystank.moodyfishing.rewards.data.RewardSection;
 import java.util.*;
 
 public class ChanceSystem {
-
-    private final TreeMap<Integer, List<ChanceDataHolder>> chanceMap;
-    private final Random random;
+    private NavigableMap<Integer, List<ChanceDataHolder>> chanceMap;
+    private Random random;
     private int totalWeight;
 
     public ChanceSystem() {
+        this.chanceMap = new TreeMap<>();
+        this.random = new Random();
+        this.totalWeight = 0;
+    }
+
+    public void reload() {
         this.chanceMap = new TreeMap<>();
         this.random = new Random();
         this.totalWeight = 0;
@@ -23,12 +28,12 @@ public class ChanceSystem {
      * @param reward     The reward section.
      * @param regionID   The region ID associated with the reward.
      */
-    public void addReward(int chance, RewardSection reward, String regionID) {
+    public synchronized void addReward(int chance, RewardSection reward, String regionID) {
         if (chance < 0 || chance > 100) {
             throw new IllegalArgumentException("Chance must be between 0 and 100");
         }
         ChanceDataHolder dataHolder = new ChanceDataHolder(regionID, chance, reward);
-        chanceMap.computeIfAbsent(chance, k -> new ArrayList<>()).add(dataHolder);
+        chanceMap.computeIfAbsent(totalWeight, k -> new ArrayList<>()).add(dataHolder);
         totalWeight += chance;
     }
 
@@ -38,19 +43,19 @@ public class ChanceSystem {
      * @param regionID The region ID to look up.
      * @return The reward section if one is found, otherwise null.
      */
-    public RewardSection getReward(String regionID) {
+    public synchronized RewardSection getReward(String regionID) {
         if (regionID == null || chanceMap.isEmpty()) {
             return null;
         }
-        int randomValue = random.nextInt(totalWeight) + 1;
+        int randomValue = random.nextInt(101);  // Generate a value between 0 and 100 (inclusive)
         int cumulativeChance = 0;
 
         for (Map.Entry<Integer, List<ChanceDataHolder>> entry : chanceMap.entrySet()) {
-            cumulativeChance += entry.getKey();
-            if (randomValue <= cumulativeChance) {
-                List<ChanceDataHolder> dataHolders = entry.getValue();
-                for (ChanceDataHolder dataHolder : dataHolders) {
-                    if (dataHolder.regionID().equals(regionID)) {
+            for (ChanceDataHolder dataHolder : entry.getValue()) {
+                if (dataHolder.regionID().equals(regionID)) {
+                    cumulativeChance += dataHolder.chance();
+                    MessageUtils.toConsole("chance system is running " +randomValue + " cumlative chance " + cumulativeChance + " and item chance " + dataHolder.chance );
+                    if (randomValue < cumulativeChance) {
                         return dataHolder.rewardSection();
                     }
                 }
@@ -62,11 +67,11 @@ public class ChanceSystem {
     /**
      * Clears the chance map.
      */
-    public void clearChances() {
+    public synchronized void clearChances() {
         chanceMap.clear();
         totalWeight = 0;
     }
 
-    private record ChanceDataHolder(String regionID, int chance, RewardSection rewardSection) {
+    private static record ChanceDataHolder(String regionID, int chance, RewardSection rewardSection) {
     }
 }

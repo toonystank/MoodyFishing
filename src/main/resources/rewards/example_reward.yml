@@ -6,6 +6,7 @@ data:
     region: <REGION_NAME_HERE>
     # If permission mode is enabled, then player will need MoodyFishing.<region>.fish
     permission_mode: false
+    remove_vanilla_loot: true
 
 reward:
   # Settings for the 25% chance reward

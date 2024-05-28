@@ -9,6 +9,7 @@ import lombok.Getter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 @Getter
 public class Reward {
@@ -23,6 +24,7 @@ public class Reward {
         this.rewardConfig = new RewardConfig(fileName);
         load();
     }
+
     public void reload() throws Exception {
         this.rewardConfig.reload();
         load();
@@ -32,13 +34,20 @@ public class Reward {
         boolean regionSpecificEnabled = rewardConfig.getBoolean("data.Region_specific.enable");
         String rewardSpecificRegion = rewardConfig.getString("data.Region_specific.region");
         boolean regionSpecificPermissionMode = rewardConfig.getBoolean("data.Region_specific.permission_mode");
-        rewardDataSection = new RewardDataSection(regionSpecificEnabled, rewardSpecificRegion,regionSpecificPermissionMode);
+        boolean regionSpecificRemoveVanillaLoot = rewardConfig.getBoolean("data.Region_specific.remove_vanilla_loot");
 
+        rewardDataSection = new RewardDataSection(regionSpecificEnabled, rewardSpecificRegion, regionSpecificPermissionMode, regionSpecificRemoveVanillaLoot);
 
-        rewardConfig.getConfigurationSection("reward", false, true).forEach(reward -> loadRewardItem(reward,rewardSpecificRegion));
+        rewardConfig.getConfigurationSection("reward", false, true).forEach(reward -> {
+            try {
+                loadRewardItem(reward, rewardSpecificRegion);
+            } catch (Exception e) {
+                plugin.getLogger().log(Level.SEVERE, "Failed to load reward: " + reward, e);
+            }
+        });
     }
 
-    private void loadRewardItem(String item,String region) {
+    private void loadRewardItem(String item, String region) {
         String itemPath = "reward." + item;
         String name = rewardConfig.getString(itemPath + ".Name");
         List<String> lore = rewardConfig.getStringList(itemPath + ".lore");
@@ -53,7 +62,12 @@ public class Reward {
         );
 
         rewardSections.add(rewardSection);
-        MoodyFishing.getInstance().getChanceSystem().addReward(Integer.parseInt(item), rewardSection, region);
+        try {
+            int chance = Integer.parseInt(item);  // This assumes that the 'item' is the chance value
+            MoodyFishing.getInstance().getChanceSystem().addReward(chance, rewardSection, region);
+        } catch (NumberFormatException e) {
+            plugin.getLogger().log(Level.SEVERE, "Invalid chance value for reward: " + item, e);
+        }
     }
 
     private List<RewardList> loadRewardList(String itemPath) {

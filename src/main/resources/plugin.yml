@@ -1,0 +1,5 @@
+name: MoodyFishing
+version: '${project.version}'
+main: com.toonystank.moodyfishing.MoodyFishing
+api-version: '1.20'
+depend: [ WorldGuard, PlaceholderAPI ]

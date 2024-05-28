@@ -55,6 +55,7 @@ public class CustomItemManager extends ConfigManger {
             List<String> lore = getStringList(itemPath + ".lore");
             boolean hideAttributes = getBoolean(itemPath + ".hide_attributes");
             boolean unbreakable = getBoolean(itemPath + ".unbreakable");
+            boolean glowing = getBoolean(itemPath + ".glowing");
 
             Map<Enchantment, Integer> enchantmentIntegerMap = new HashMap<>();
             List<String> enchantments = getStringList(itemPath + ".enchantment");
@@ -70,7 +71,7 @@ public class CustomItemManager extends ConfigManger {
                 enchantmentIntegerMap.put(enchantment, Integer.parseInt(enchantmentAndLevel[1]));
             }
 
-            CustomItem customItem = new CustomItem(item, material, modelData, itemName, lore, hideAttributes, unbreakable, enchantmentIntegerMap);
+            CustomItem customItem = new CustomItem(item, material, modelData, itemName, lore, hideAttributes, unbreakable, glowing, enchantmentIntegerMap);
             customItemList.add(customItem);
         }
     }

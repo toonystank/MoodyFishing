@@ -9,4 +9,5 @@ public class RewardDataSection {
     private boolean regionSpecificEnabled;
     private String regionSpecificRegion;
     private boolean regionSpecificPermissionMode;
+    private boolean regionSpecificRemoveVanillaLoot;
 }

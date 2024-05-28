@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public record CustomItem(String id, Material material, int modelData, String itemName, List<String> lore,
-                         boolean hideAttributes, boolean unbreakable, Map<Enchantment, Integer> enchantmentMap) {
+                         boolean hideAttributes, boolean unbreakable,boolean glowing, Map<Enchantment, Integer> enchantmentMap) {
 
     public ItemStack build() {
         ItemBuilder builder = ItemBuilder
@@ -20,6 +20,7 @@ public record CustomItem(String id, Material material, int modelData, String ite
                 .name(MessageUtils.format(itemName,true))
                 .lore(MessageUtils.format(lore,true))
                 .unbreakable(unbreakable)
+                .glow(glowing)
                 .model(modelData);
         if (hideAttributes) {
             builder.flags(ItemFlag.HIDE_ATTRIBUTES);
